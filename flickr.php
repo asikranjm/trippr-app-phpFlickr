@@ -3,16 +3,15 @@
 require_once('phpFlickr.php');
 
 $flickr = new phpFlickr("46dea5f6abb12aed7a823adb7ecf5816");
-$pics_file = fopen("../pics_file.txt", "w") or die("Unable to open file!");
+$pics_file = fopen("pics_file.txt", "w") or die("Unable to open file!");
 
-$photos = $flickr->photos_search(array( "tags"=>"travel,trip,vacation,landscape",
+$photos = $flickr->photos_search(array( "tags"              =>"objects,color,- people,- person,trip,travel,vacation",
                                         "tag_mode"          =>"any",
-                                        "per_page"          =>"10",
+                                        "per_page"          =>"20",
                                         "sort"              =>"interestingness-desc",
-                                        "privacy_filter"    => "1",
                                         "content_type"      => "1",
                                         "safe_search"       => "1",
-                                        "license"           => "7"
+                                        "license"           => "9"
 ));
 
 //$user     = $flickr->people_findByUsername('stathisg');
@@ -22,7 +21,7 @@ $count = 0;
 foreach ($photos['photo'] as $photo)
 {
 
-    echo "Image: ".$count++."\n";
+    echo "Image: ".$count++;
     //We get the Information of each photo giving the Photo_ID
     $photo_info = $flickr->photos_getInfo($photo['id']);
     //We stract the TAGS array for each photo
@@ -41,6 +40,7 @@ foreach ($photos['photo'] as $photo)
         if($size['label'] == 'Large')
             $url = $size['source'];
     }
+    echo ": ".$url."\n";
     $line = $url.":";
     //echo '<img alt="'.$photo['title'].'" src="'.$flickr->buildPhotoURL($photo, "square").'" />';
     //echo '<a rel="nofollow" target="_blank" href="'.$url.'">Link : </a>';
