@@ -34,11 +34,13 @@ foreach ($photos['photo'] as $photo)
     $url= '';
     foreach ($photo_sizes as $size)
     {
+        //Only get Medium Images for file sizes proposes
         if($size['label'] == 'Medium')
             $url = $size['source'];
-
+        /*
         if($size['label'] == 'Large')
             $url = $size['source'];
+        */
     }
     echo ": ".$url."\n";
     $line = $url.":";
