@@ -5,7 +5,7 @@ require_once('phpFlickr.php');
 $flickr = new phpFlickr("46dea5f6abb12aed7a823adb7ecf5816");
 $pics_file = fopen("pics_file.txt", "w") or die("Unable to open file!");
 
-$photos = $flickr->photos_search(array( "tags"              =>"objects,color,- people,- person,trip,travel,vacation",
+$photos = $flickr->photos_search(array( "tags"              =>"trip,travel,vacation,objects,color,- people,- person,- bikini,- human",
                                         "tag_mode"          =>"any",
                                         "per_page"          =>"20",
                                         "sort"              =>"interestingness-desc",
@@ -35,12 +35,8 @@ foreach ($photos['photo'] as $photo)
     foreach ($photo_sizes as $size)
     {
         //Only get Medium Images for file sizes proposes
-        if($size['label'] == 'Medium')
+        if($size['label'] == 'Medium 640')
             $url = $size['source'];
-        /*
-        if($size['label'] == 'Large')
-            $url = $size['source'];
-        */
     }
     echo ": ".$url."\n";
     $line = $url.":";
