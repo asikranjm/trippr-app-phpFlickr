@@ -7,7 +7,7 @@ $pics_file = fopen("pics_file.txt", "w") or die("Unable to open file!");
 
 $photos = $flickr->photos_search(array( "tags"              =>"trip,travel,vacation,objects,color,- people,- person,- bikini,- human",
                                         "tag_mode"          =>"any",
-                                        "per_page"          =>"20",
+                                        "per_page"          =>"50",
                                         "sort"              =>"interestingness-desc",
                                         "content_type"      => "1",
                                         "safe_search"       => "1",
