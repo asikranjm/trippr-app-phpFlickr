@@ -21,9 +21,10 @@ $count = 0;
 foreach ($photos['photo'] as $photo)
 {
 
-    echo "Image: ".$count++;
+    echo "Image: ".$count++." / ";
     //We get the Information of each photo giving the Photo_ID
     $photo_info = $flickr->photos_getInfo($photo['id']);
+    echo $photo_info['photo']['urls']['url'][0]['_content']."\n";
     //We stract the TAGS array for each photo
     $arrya_tags = $photo_info['photo']['tags']['tag'];
 
@@ -38,7 +39,7 @@ foreach ($photos['photo'] as $photo)
         if($size['label'] == 'Medium 640')
             $url = $size['source'];
     }
-    echo ": ".$url."\n";
+    //echo ": ".$url."\n";
     $line = $url.":";
     //echo '<img alt="'.$photo['title'].'" src="'.$flickr->buildPhotoURL($photo, "square").'" />';
     //echo '<a rel="nofollow" target="_blank" href="'.$url.'">Link : </a>';
